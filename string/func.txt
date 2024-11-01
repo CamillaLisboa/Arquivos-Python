@@ -1,0 +1,19 @@
+* the function choice randomly selects an item. 
+* ascii_lowercase: only lowercase letters
+* ascii_uppercase: only uppercase letters
+* digits: only numbers 
+* ascii_letters: lower and uppercase letters
+* sample randomly selects a number of choices
+* shuffle: shuffle the items order in the list
+* join: turns the list into a string 
+* extend: insert the items of a list into another list
+
+* .find() - retorna a posição do primeiro encontrado
+* .rfind() - retorna a posição do primeiro encontrado, porém verifica na forma reversa
+
+** quando o find não acha, retorna '-1'
+* .count() - conta as ocorrências
+* .split() - separa coisas - quando sem parametros, cria uma lista e separa por espaço
+* .isdigit() - verifica se é algarismo
+* .replace() - subtstitui
+
