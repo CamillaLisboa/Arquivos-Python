@@ -32,8 +32,34 @@ class LSE:
         else:
             q = self.Inicio
             while q.getProx() != None:
-                q.getProx()
+                q = q.getProx()
             q.setProx(p)
+
+    def Ins_Depois(self, r, val):
+        p = No(val)
+        p.setProx(r.getProx())
+        r.setProx(p)
+
+    def Ins_Antes(self, r, val):
+        p = self.Inicio
+        while p.getProx() != r:
+            p = p.getProx()
+
+        novo_no = No(val)
+        novo_no.setProx(r)
+        p.setProx(novo_no)
+
+    def Ins_Ordem(self,val):
+        if self.Inicio == None or val < self.Inicio.getInfo():
+            self.Ins_Inicio(val)
+        else:
+            p = self.Inicio
+            while p is not None:
+                if p.getInfo() < val:
+                    p=p.getProx()
+                else:
+                    self.Ins_Antes(p,val)
+            self.Ins_Fim(p, val) 
 
     def Rem_Inicio(self):
         if self.Inicio.getProx() == None:
@@ -51,19 +77,12 @@ class LSE:
                 p = p.getProx()
         q.setProx(None)
 
-    def Rem_Cosnulta(self, valor):
-    
-        if self.Inicio == valor:
-            L.Rem_Inicio()
-        elif self.Inicio.getProx() == None:
-            L.Rem_Fim()
-        else:
-            p = self.Inicio
-            while p != None:
-                if p.getInfo() == valor:
-                    p.setProx(p.getProx())
-                else:
-                    p = p.getProx()   
+    def Rem_Cosnulta(self, r):
+        p = self.Inicio
+        while p.getProx() != r:
+            p = p.getProx()
+         
+        p.setProx(r.getProx())
 
 
     def Imprime(self):
@@ -89,6 +108,9 @@ while True:
     print("5 - Remover no Fim")
     print("6 - Consultar um No")
     print("7 - Remover por Consulta")
+    print("8 - Inserir depois de um valor")
+    print("9 - Inserir antes de um valor")
+    print("10 - Inserir de forma Ordenada")
     print("0 - Sair do Programa")
 
     op = int(input())
@@ -120,7 +142,7 @@ while True:
             L.Rem_Fim()
 
     elif op == 6:
-        val = input('digite o valor de pesquisa')
+        val = int(input('digite o valor de pesquisa'))
         r = L.Consulta(val)
         if r == None:
             print("valor nao existe na lista")
@@ -128,12 +150,44 @@ while True:
             print('Valor encontrado:', r.getInfo())
 
     elif op == 7:
-        val = input('digite o valor de pesquisa')
+        val = int(input('digite o valor de pesquisa'))
         r = L.Consulta(val)
 
-        if L.Inicio == None:
-            print(" Lista Vazia")
-        elif r == None:
-            print("Valor não encontrado na Lista")
+        if r == None:
+            print("Valor não encontrado")
         else:
-            L.Rem_Cosnulta(r)
+            if r == L.Inicio:
+                L.Rem_Inicio()
+            else:
+                if r.getProx() == None:
+                    L.Rem_Fim()
+                else:
+                    L.Rem_Cosnulta(r)
+
+    elif op == 8:
+        val = int(input('digite o valor de pesquisa'))
+        r = L.Consulta(val)
+        if r == None:
+            print("valor nao existe na lista")
+        else: 
+            val = int(input("Digite o valor a inserir"))
+            if r.getProx() == None:
+                L.Ins_Fim(val)
+            else:
+                L.Ins_Depois(r,val)
+
+    elif op == 9:
+        val = int(input('digite o valor de pesquisa'))
+        r = L.Consulta(val)
+        if r == None:
+            print("valor nao existe na lista")
+        else: 
+            val = int(input("Digite o valor a inserir"))
+            if r==L.Inicip():
+                L.Ins_Inicio(val)
+            else:
+                L.Ins_Antes(r,val)
+
+    elif op == 10:
+        val = int(input("Digite o valor a inserir"))
+        L.Ins_Ordem(L, val)
