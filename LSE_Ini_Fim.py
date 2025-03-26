@@ -5,25 +5,25 @@ class No:
 
     def getInfo(self):
         return self.info
-    
+
     def getProx(self):
         return self.prox
-    
+
     def setInfo(self, val):
         self.info = val
 
     def setProx(self, prox):
         self.prox = prox
 
+
 class LSE2:
     def __init__(self):
         self.Inicio = None
         self.Fim = None
 
-    def Ins_Inicio(self, val):
+    def Ins_Inicio(self,val):
         p = No(val)
-
-        if self.Inicio == None:
+        if self.Inicio==None:  #lista esta vazia
             self.Inicio = p
             self.Fim = p
         else:
@@ -32,8 +32,7 @@ class LSE2:
 
     def Ins_Fim(self, val):
         p = No(val)
-        
-        if self.Inicio == None:
+        if self.Inicio == None:  # lista esta vazia
             self.Inicio = p
             self.Fim = p
         else:
@@ -49,31 +48,24 @@ class LSE2:
         print("None")
 
     def Rem_Inicio(self):
-        p = self.Inicio
-        
-        if p.getProx() == None:
+        if self.Inicio==self.Fim: #existe 1 nó
             self.Inicio = None
             self.Fim = None
         else:
-            self.Inicio = p.getProx()
-
-    def Rem_Meio(self,r):
-        p=self.Inicio
-        while p.getProx() != r:
-            p=p.getProx()
-
-        q= r.getProx()
-        p.setProx(q)
-
+            self.Inicio = self.Inicio.getProx()
 
     def Rem_Fim(self):
-        p = self.Inicio
+        if self.Inicio==self.Fim: #existe 1 nó
+            self.Inicio = None
+            self.Fim = None
+        else:
+            p = self.Inicio
+            #posicionando p no penúltimo nó da lista
+            while (p.getProx() != self.Fim):
+                p = p.getProx()
 
-        while p.getProx() != self.Fim:
-            p = p.getProx()
-        
-        p.setProx(None)
-        self.Fim = p
+            p.setProx(None)
+            self.Fim = p
 
     def Consulta(self, val):
         p = self.Inicio
@@ -93,75 +85,47 @@ class LSE2:
         if r==self.Fim:
             self.Fim = p
 
-    def Trans_Final(self,r):
-        p= self.Inicio
-        
-        if self.Inicio == r:
-            self.Inicio = r.getProx()
-        else:
-            while p.getProx() != r:
-                p=p.getProx()
-            p.setProx(r.getProx())
-        self.Fim.setProx(r)
-        r.setProx(None)
-        self.Fim = r
 
-    def Rem_Oco(self):
-
-        p = self.Inicio
-        while p is not None:
-            q = p.getProx()
-            while q is not None:
-                if p.getInfo() == q.getInfo():
-                    if q == self.Fim:
-                        self.Rem_Fim()
-                    else:
-                        self.Rem_Meio(q)
-                    q = p.getProx()
-                else:
-                    q = q.getProx()
-            p = p.getProx()
-        print("Ocorrências removidas com sucesso, se existirem.")
-
-        
 
 L = LSE2()
-
 while True:
     print("1 - Inserir no Inicio")
     print("2 - Inserir no Fim")
     print("3 - Imprimir a Lista")
     print("4 - Remover no Inicio")
-    print("5 - Remover no Fim ")
+    print("5 - Remover no Fim")
     print("6 - Consultar um Valor")
+
     print("7 - Transferir um Valor para o Inicio")
-    print("8 - Transferir um valor para o Final")
-    print("9 - Remover valores repetidos")
+
     print("0 - Sair do Programa")
 
-    op = int(input("Digite a opcao:"))
-
-    if op == 0:
+    op = int(input("Digite a opcao: "))
+    if op==0:
         break
-    elif op == 1:
-        val = int(input("Digite o valor a inserir:"))
-        L.Ins_Inicio(val) 
+    elif op==1:
+        val = int(input("Digite o valor a inserir: "))
+        L.Ins_Inicio(val)
+
     elif op == 2:
-        val = int(input("Digite o valor a inserir:"))
-        L.Ins_Fim(val) 
-    elif op == 3:
-        if L.Inicio == None:
-            print("Lista vazia!")
+        val = int(input("Digite o valor a inserir: "))
+        L.Ins_Fim(val)
+
+    elif op==3:
+        if L.Inicio==None:
+            print("\nLista Vazia!")
         else:
             L.Imprime()
-    elif op == 4:
-        if L.Inicio == None:
-            print("Lista vazia")
+
+    elif op==4:
+        if L.Inicio==None:
+            print("\nLista Vazia!")
         else:
             L.Rem_Inicio()
-    elif op == 5:
-        if L.Inicio == None:
-            print("Lista vazia")
+
+    elif op==5:
+        if L.Inicio==None:
+            print("\nLista Vazia!")
         else:
             L.Rem_Fim()
 
@@ -184,16 +148,5 @@ while True:
             else:
                 L.Trans_Inicio(r)
 
-    elif op ==8:
-        val = int(input("Digite o valor a transferir: "))
-        r = L.Consulta(val)
-        if r==None:
-            print("\nValor nao existe na lista!")
-        else:
-            if r==L.Fim:
-                print("\nJá é o ultimo da lista!")
-            else:
-                L.Trans_Final(r)
 
-    elif op ==9:
-        L.Rem_Oco()
+
