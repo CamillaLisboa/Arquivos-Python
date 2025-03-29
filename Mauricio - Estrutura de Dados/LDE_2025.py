@@ -63,7 +63,28 @@ class LDE:
             self.Inicio = self.Inicio.getDir()
             self.Inicio.setEsq(None)
 
-    
+    def Rem_Fim(self):
+        if self.Inicio==self.Fim:  #só existe 1 nó
+            self.Inicio = None
+            self.Fim = None
+        else:
+            self.Fim = self.Fim.getEsq()
+            self.Fim.setDir(None)
+
+    def Buscar(self, val):
+        p=self.Inicio
+        while p != None and p.getInfo()!= val:
+            p = p.getDir()
+
+        return p
+
+    def Rem_Meio(self, r):
+        p = r.getEsq()
+        q = r.getDir()
+
+        p.setDir(q)
+        q.setEsq(p)
+
 
 
 
@@ -74,6 +95,8 @@ while True:
     print("3 - Imprimir a Lista")
     print("4 - Remover no Inicio")
     print("5 - Remover no Fim")
+    print("6 - Buscar Valor")
+    print("7 - Remover Valor")
 
     print("0 - Sair do programa")
     op = int(input("\nDigite a opcao: "))
@@ -100,5 +123,35 @@ while True:
         else:
             L.Rem_Inicio()
 
+    elif op==5:
+        if L.Inicio==None:
+            print("\nLista Vazia!\n")
+        else:
+            L.Rem_Fim()
+
+    elif op==6:
+        val = int(input("Digite o valor a buscar:"))
+        r = L.Buscar(val)
+        if r != None:
+            print(f"\nElemento {val} encontrado!\n")
+        else:
+            print(f'\nElemento não econtrado!\n')
+
+    elif op==7:
+        val = int(input("Digite valor para remover:"))
+        r = L.Buscar(val)
+
+        if r==None:
+            print('Valor não existe!')
+        
+        else: 
+            if r==L.Inicio:
+                L.Rem_Inicio()
+            else:
+                if r==L.Fim:
+                    L.Rem_Fim()
+                else:
+                    L.Rem_Meio(r)
+        
 
 
