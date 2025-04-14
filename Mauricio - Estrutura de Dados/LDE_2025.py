@@ -1,31 +1,42 @@
+from random import randint
+
+
 class No:
     def __init__(self, val):
         self.esq = None
         self.info = val
         self.dir = None
 
+
     def getEsq(self):
         return self.esq
+
 
     def getDir(self):
         return self.dir
 
+
     def getInfo(self):
         return self.info
+
 
     def setEsq(self, x):
         self.esq = x
 
+
     def setDir(self, x):
         self.dir = x
 
+
     def setInfo(self, x):
         self.info = x
+
 
 class LDE:
     def __init__(self):
         self.Inicio = None
         self.Fim = None
+
 
     def Ins_Inicio(self, val):
         p = No(val)
@@ -37,6 +48,7 @@ class LDE:
             self.Inicio.setEsq(p)
             self.Inicio = p
 
+
     def Ins_Fim(self, val):
         p = No(val)
         if self.Inicio == None:  # lista vazia
@@ -47,6 +59,19 @@ class LDE:
             self.Fim.setDir(p)
             self.Fim = p
 
+
+    def Ins_Depois(self, r, val):
+        p = No(val)
+
+
+        p.setEsq(r)
+        p.setDir(r.getDir())
+
+
+        p.getDir().setEsq(p)
+        p.getEsq().setDir(p)
+
+
     def Imprime(self):
         p = self.Inicio
         print("\nNone", end='')
@@ -54,6 +79,7 @@ class LDE:
             print("<--", p.getInfo(),"-->",end='')
             p = p.getDir()
         print(None)
+
 
     def Rem_Inicio(self):
         if self.Inicio==self.Fim:  #só existe 1 nó
@@ -63,6 +89,7 @@ class LDE:
             self.Inicio = self.Inicio.getDir()
             self.Inicio.setEsq(None)
 
+
     def Rem_Fim(self):
         if self.Inicio==self.Fim:  #só existe 1 nó
             self.Inicio = None
@@ -71,19 +98,44 @@ class LDE:
             self.Fim = self.Fim.getEsq()
             self.Fim.setDir(None)
 
+
     def Buscar(self, val):
         p=self.Inicio
         while p != None and p.getInfo()!= val:
             p = p.getDir()
 
+
         return p
+
 
     def Rem_Meio(self, r):
         p = r.getEsq()
         q = r.getDir()
 
+
         p.setDir(q)
         q.setEsq(p)
+
+
+    def Rem_Par(self):
+        p = self.Inicio
+        while p != None:
+            if p.getInfo() % 2 == 0:
+                if p == self.Inicio:
+                    L.Rem_Inicio()
+                elif p == self.Fim:
+                    L.Rem_Fim()
+                else:
+                    L.Rem_Meio(p)
+                p = self.Inicio
+            p = p.getDir()
+
+
+
+
+    def Gerador(self, val):
+        for i in range(val):
+            self.Ins_Fim(randint(1,100))
 
 
 
@@ -97,9 +149,14 @@ while True:
     print("5 - Remover no Fim")
     print("6 - Buscar Valor")
     print("7 - Remover Valor")
+    print("8 - Inserir Depois")
+    print("9 - Gerar Lista")
+    print("10 - Remover valores pares")
+
 
     print("0 - Sair do programa")
     op = int(input("\nDigite a opcao: "))
+
 
     if op==0:
         break
@@ -107,9 +164,11 @@ while True:
         val = int(input("Digite o valor a inserir: "))
         L.Ins_Inicio(val)
 
+
     elif op==2:
         val = int(input("Digite o valor a inserir: "))
         L.Ins_Fim(val)
+
 
     elif op==3:
         if L.Inicio==None:
@@ -117,17 +176,20 @@ while True:
         else:
             L.Imprime()
 
+
     elif op==4:
         if L.Inicio==None:
             print("\nLista Vazia!\n")
         else:
             L.Rem_Inicio()
 
+
     elif op==5:
         if L.Inicio==None:
             print("\nLista Vazia!\n")
         else:
             L.Rem_Fim()
+
 
     elif op==6:
         val = int(input("Digite o valor a buscar:"))
@@ -137,14 +199,16 @@ while True:
         else:
             print(f'\nElemento não econtrado!\n')
 
+
     elif op==7:
         val = int(input("Digite valor para remover:"))
         r = L.Buscar(val)
 
+
         if r==None:
             print('Valor não existe!')
-        
-        else: 
+       
+        else:
             if r==L.Inicio:
                 L.Rem_Inicio()
             else:
@@ -152,6 +216,24 @@ while True:
                     L.Rem_Fim()
                 else:
                     L.Rem_Meio(r)
-        
+               
+    elif op==8:
+        val = int(input("Digite o valor a buscar:"))
+        r = L.Buscar(val)
+        if r == None:
+            print(f"\n Valor não existe\n")
+        else:
+            val = int(input("Digite o valor a inserir:"))
+            if r == L.Fim:
+                L.Ins_Fim(val)
+            else:
+                L.Ins_Depois(r,val)
 
 
+    elif op == 9:
+        val = int(input("Digite o total de valors da lista:"))
+        L.Gerador(val)
+
+
+    elif op ==10:
+        L.Rem_Par()
