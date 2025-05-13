@@ -28,6 +28,20 @@ def Converte (Pilha, val):
 
     return bin
 
+def Insere_Ordenado(Pilha, val):
+    PilhaAux = [0]*len(Pilha)
+    topo_aux = -1
+
+    while topo >= 0 and Pilha[topo] < val:
+        topo_aux += 1
+        PilhaAux[topo_aux] = Pop(Pilha)
+
+    Push(Pilha, val)
+
+    while topo_aux >= 0:
+        Push(Pilha, PilhaAux[topo_aux])
+        topo_aux -= 1
+
 
 Pilha=[0]*10
 topo = -1   #Pilha está vazia
@@ -36,6 +50,7 @@ while True:
     print("2 - Remover da Pilha")
     print("3 - Imprimir a Pilha")
     print("4 - Converter decimal para binario")
+    print("5 - Inserir Ordenado")
     print("0 - Sair do Programa")
 
     op = int(input("Digite a opcao: "))
@@ -64,6 +79,15 @@ while True:
         val = int (input("Digite o valor em decimal:"))
         bin = Converte(Pilha, val)
         print("\nValor em binario:", bin)
+
+    elif op==5:
+        val = int(input("Digite o valor a ser inderido"))
+        if topo == len(Pilha)-1:
+            print("\nPilha cheia!")
+        else:
+            Insere_Ordenado(Pilha, val)
+
+
 
 
 
