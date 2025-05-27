@@ -34,11 +34,23 @@ def CAPB(n):
 
     return r
 
-def Imprime(Raiz):
+def In_Order(Raiz):
     if Raiz != None:
-        Imprime(Raiz.getEsq())
+        In_Order(Raiz.getEsq())
         print(Raiz.getInfo(), end=' ')
-        Imprime(Raiz.getDir())
+        In_Order(Raiz.getDir())
+
+def Pre_Order(Raiz):
+    if Raiz != None:
+        print(Raiz.getInfo(), end=" ")
+        Pre_Order(Raiz.getEsq())
+        Pre_Order(Raiz.getDir())
+
+def Pos_Order(Raiz):
+    if Raiz != None:
+        Pos_Order(Raiz.getEsq())
+        Pos_Order(Raiz.getDir())
+        print(Raiz.getInfo(), end=" ")
 
 def Folhas(Raiz):
     if Raiz != None:
@@ -47,27 +59,16 @@ def Folhas(Raiz):
             print(Raiz.getInfo(), end=' ')
         Folhas(Raiz.getDir())
 
+
 Raiz = None
 Raiz = CAPB(8)
 print("\nArvore:\n")
-Imprime(Raiz)
-print("\nFolhas:\n")
+print("\n PRE:", end=" ")
+Pre_Order(Raiz)
+print("\n IN :", end=" ")
+In_Order(Raiz)
+print("\n POS:", end=" ")
+Pos_Order(Raiz)
+print("\n Folhas:", end=" ")
 Folhas(Raiz)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
