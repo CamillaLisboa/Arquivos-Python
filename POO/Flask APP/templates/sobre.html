@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mim</title>
+</head>
+<body>
+    <h2>Sobre mim</h2>
+    <hr>
+    {% for chave, valor in notas.items() %}
+    <details>
+        <summary>{{ chave }}</summary>
+        <p>{{ valor }}</p>
+    </details>
+    {% endfor %}
+</body>
+</html>
