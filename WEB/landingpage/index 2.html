@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buddy — Tecnologia Assistiva para Ensino de Inglês</title>
+  <meta name="description" content="Buddy é uma aplicação web inclusiva para ensinar inglês a jovens autistas. Landing page acessível, 100% HTML + CSS (sem JS)." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Buddy.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (ícones) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Pular para conteúdo</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-wrap">
+      <a class="brand" href="#top" aria-label="Página inicial Buddy">
+        <img src="Buddy.png" alt="Logo Buddy" class="logo-img" />
+        <span class="brand-text">Buddy</span>
+      </a>
+
+      <nav class="main-nav" role="navigation" aria-label="Principal">
+        <ul class="nav-list">
+          <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i> Sobre</a></li>
+          <li><a href="#metas"><i class="fa-solid fa-bullseye"></i> Metas</a></li>
+          <li><a href="#recursos"><i class="fa-solid fa-puzzle-piece"></i> Recursos</a></li>
+          <li><a href="#faq"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+          <li><a href="#depoimentos"><i class="fa-solid fa-quote-left"></i> Depoimentos</a></li>
+          <li><a class="btn cta-small" href="#inscricao"><i class="fa-solid fa-paper-plane"></i> Inscrever-se</a></li>
+          <li><a class="login" href="#login" aria-disabled="true" title="Acesso restrito em breve"><i class="fa-solid fa-lock"></i> Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1 id="hero-title">Tecnologia assistiva para ensinar inglês a jovens autistas</h1>
+          <p class="subtitle">
+            O <strong>Buddy</strong> é uma aplicação web inclusiva, com recursos visuais e auditivos
+            pensados para diferentes perfis sensoriais.
+          </p>
+          <ul class="hero-bullets">
+            <li><i class="fa-solid fa-check"></i> Ensino adaptado e personalizável</li>
+            <li><i class="fa-solid fa-check"></i> Comunicação alternativa (CAA) com pictogramas</li>
+            <li><i class="fa-solid fa-check"></i> Relatórios para responsáveis e educadores</li>
+          </ul>
+          <div class="hero-cta">
+            <a class="btn cta" href="#inscricao">Participar do piloto</a>
+            <a class="btn ghost" href="#sobre">Entenda o projeto</a>
+          </div>
+
+          <!-- Alternância de alto contraste somente com CSS -->
+          <form class="toggle-wrap" aria-label="Preferências visuais">
+            <input type="checkbox" id="hc" class="visually-hidden" />
+            <label for="hc" class="toggle"><i class="fa-solid fa-eye"></i> Alto contraste</label>
+            <span class="tip">Alterna tema via CSS, sem JavaScript</span>
+          </form>
+        </div>
+
+        <figure class="hero-media" aria-label="Ilustração: aprendizagem inclusiva">
+          <svg viewBox="0 0 640 420" class="hero-svg float" role="img" aria-labelledby="svgTitle svgDesc">
+            <title id="svgTitle">Aprender inglês com apoio visual acessível</title>
+            <desc id="svgDesc">Cartões de estudo e barras de progresso em estilo minimalista.</desc>
+            <rect x="0" y="0" width="640" height="420" rx="24" class="panel"/>
+            <rect x="40" y="40" width="260" height="160" rx="16" class="tile a"/>
+            <rect x="340" y="40" width="260" height="80" rx="12" class="tile b"/>
+            <rect x="340" y="140" width="260" height="60" rx="12" class="tile c"/>
+            <rect x="40" y="220" width="560" height="140" rx="16" class="tile d"/>
+            <circle cx="120" cy="120" r="28" class="dot"/>
+            <rect x="160" y="100" width="120" height="16" rx="8" class="bar"/>
+            <rect x="160" y="124" width="96" height="12" rx="6" class="bar soft"/>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section" aria-labelledby="sobre-title">
+      <div class="container">
+        <h2 id="sobre-title">Sobre o Buddy</h2>
+        <p>
+          Ambiente inclusivo para o ensino de inglês a jovens no espectro autista. Interface simples, ajustes de
+          acessibilidade (cores, sons, contraste) e conteúdos visuais para reduzir sobrecarga sensorial.
+        </p>
+        <div class="cards" role="list">
+          <article class="card" role="listitem">
+            <i class="fa-solid fa-bullseye-arrow card-ico" aria-hidden="true"></i>
+            <h3>Objetivo</h3>
+            <p>Aprendizado <em>personalizado</em> e <em>inclusivo</em>, com progresso claro e motivador.</p>
+          </article>
+          <article class="card" role="listitem">
+            <i class="fa-solid fa-graduation-cap card-ico" aria-hidden="true"></i>
+            <h3>Metodologia</h3>
+            <p>Pesquisa, prototipagem e validação com alunos, responsáveis e professores.</p>
+          </article>
+          <article class="card" role="listitem">
+            <i class="fa-solid fa-universal-access card-ico" aria-hidden="true"></i>
+            <h3>Acessibilidade</h3>
+            <p>Compatível com leitores de tela e comunicação alternativa (CAA).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METAS -->
+    <section id="metas" class="section alt" aria-labelledby="metas-title">
+      <div class="container metas-grid">
+        <div>
+          <h2 id="metas-title">Metas e público‑alvo</h2>
+          <ul class="checklist">
+            <li><i class="fa-solid fa-check-circle"></i> Atividades visuais e auditivas adequadas ao perfil cognitivo.</li>
+            <li><i class="fa-solid fa-check-circle"></i> Relatórios para responsáveis e professores.</li>
+            <li><i class="fa-solid fa-check-circle"></i> Ambiente seguro, sem distrações e com controle parental.</li>
+          </ul>
+          <p class="note-small">Público: jovens no TEA, seus responsáveis, professores e terapeutas.</p>
+        </div>
+        <aside class="selo" aria-label="Compromissos Buddy">
+          <i class="fa-solid fa-shield-heart"></i>
+          <span>Compromisso com inclusão e privacidade</span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="recursos" class="section" aria-labelledby="recursos-title">
+      <div class="container">
+        <h2 id="recursos-title">Recursos do Buddy</h2>
+        <div class="features">
+          <article class="feature">
+            <i class="fa-solid fa-user-gear"></i>
+            <h3>Cadastro & Personalização</h3>
+            <p>Perfis, níveis e preferências sensoriais com ajustes de acessibilidade.</p>
+          </article>
+          <article class="feature">
+            <i class="fa-solid fa-gamepad"></i>
+            <h3>Módulos Interativos</h3>
+            <p>Jogos, blocos de frases e categorias (objetos, ações, emoções).</p>
+          </article>
+          <article class="feature">
+            <i class="fa-solid fa-trophy"></i>
+            <h3>Gamificação</h3>
+            <p>Recompensas, personalização do ambiente e progresso visual.</p>
+          </article>
+          <article class="feature">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Relatórios</h3>
+            <p>Estatísticas de desempenho e envio periódico.</p>
+          </article>
+          <article class="feature">
+            <i class="fa-solid fa-lock"></i>
+            <h3>Segurança & Privacidade</h3>
+            <p>LGPD/GDPR e controles parentais.</p>
+          </article>
+          <article class="feature">
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+            <h3>Acesso Offline</h3>
+            <p>Lições baixáveis com sincronização posterior.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">Perguntas frequentes</h2>
+        <details class="faq">
+          <summary><i class="fa-solid fa-caret-right"></i> Para quem é o Buddy?</summary>
+          <p>Para jovens no espectro autista e seus responsáveis, professores e terapeutas interessados em tecnologia assistiva.</p>
+        </details>
+        <details class="faq">
+          <summary><i class="fa-solid fa-caret-right"></i> Precisa instalar?</summary>
+          <p>É uma aplicação web, acessível pelo navegador. Futuramente haverá apps móveis.</p>
+        </details>
+        <details class="faq">
+          <summary><i class="fa-solid fa-caret-right"></i> Como funciona a personalização?</summary>
+          <p>Você ajusta preferências sensoriais (cores/sons/contraste) e o nível de dificuldade das atividades.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos" class="section alt" aria-labelledby="dep-title">
+      <div class="container">
+        <h2 id="dep-title">O que dizem sobre o Buddy</h2>
+        <div class="grid-2">
+          <blockquote class="depo">
+            <p>“Os recursos visuais e a comunicação alternativa facilitaram muito a participação dos alunos.”</p>
+            <footer>— Professora de educação especial</footer>
+          </blockquote>
+          <blockquote class="depo">
+            <p>“Acompanhar o progresso semanal nos relatórios nos ajudou a ajustar as atividades em casa.”</p>
+            <footer>— Responsável por estudante no espectro</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section id="inscricao" class="section" aria-labelledby="form-title">
+      <div class="container">
+        <h2 id="form-title">Inscreva-se para o piloto</h2>
+        <p>Preencha o formulário para receber acesso ao piloto e materiais introdutórios.</p>
+
+        <form class="form-grid" action="#" method="post">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" required minlength="3" maxlength="80" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="tel">Telefone (WhatsApp)</label>
+            <input id="tel" name="tel" type="tel" placeholder="(00) 00000-0000" autocomplete="tel" />
+          </div>
+
+          <div class="field">
+            <label for="perfil">Seu perfil</label>
+            <select id="perfil" name="perfil" required>
+              <option value="">Selecione</option>
+              <option value="responsavel">Responsável</option>
+              <option value="professor">Professor(a)</option>
+              <option value="terapeuta">Terapeuta</option>
+              <option value="estudante">Estudante</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="idade">Idade do estudante</label>
+            <input id="idade" name="idade" type="number" min="4" max="25" step="1" />
+          </div>
+
+          <div class="field">
+            <label for="nivel">Nível de inglês</label>
+            <input id="nivel" name="nivel" type="range" min="0" max="5" value="0" />
+            <small class="hint">0 = iniciante · 5 = avançado</small>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Preferências sensoriais</legend>
+              <label class="check"><input type="checkbox" name="prefs[]" value="baixo-contraste" /> Prefiro baixo contraste</label>
+              <label class="check"><input type="checkbox" name="prefs[]" value="som-reduzido" /> Reduzir sons</label>
+              <label class="check"><input type="checkbox" name="prefs[]" value="animacao-reduzida" /> Animações reduzidas</label>
+              <label class="check"><input type="checkbox" name="prefs[]" value="tipografia-legivel" /> Tipografia mais legível</label>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="data">Data preferida para contato</label>
+            <input id="data" name="data" type="date" />
+          </div>
+
+          <div class="field full">
+            <label for="msg">Mensagem</label>
+            <textarea id="msg" name="msg" rows="4" maxlength="600" placeholder="Conte-nos sobre seus objetivos, necessidades e contexto."></textarea>
+          </div>
+
+          <div class="field full agree">
+            <label class="check">
+              <input type="checkbox" name="lgpd" required />
+              Li e aceito a política de privacidade (LGPD/GDPR).
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="btn cta" type="submit" aria-label="Enviar inscrição">Enviar inscrição</button>
+            <p class="legal">Acesso restrito (login) disponível em breve.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="foot-brand">
+        <span class="brand-text">Buddy</span>
+        <p>Projeto educacional com tecnologia assistiva para ensino de inglês.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Rodapé">
+        <a href="#sobre">Sobre</a>
+        <a href="#metas">Metas</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#inscricao">Inscreva-se</a>
+      </nav>
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="E-mail"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="container fineprint">
+      <small>© 2025 Buddy. Todos os direitos reservados.</small>
+    </div>
+  </footer>
+</body>
+</html>
