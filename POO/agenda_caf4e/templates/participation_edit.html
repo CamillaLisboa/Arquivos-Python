@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Editar participação</h2>
+  <form action="{{ url_for('update_participation', pid=part.id) }}" method="post" class="grid">
+    <input type="hidden" name="event_id" value="{{ part.event_id }}">
+    <div class="form-group">
+      <label for="student_name">Aluno</label>
+      <input type="text" id="student_name" name="student_name" value="{{ student.name if student else part.student_name }}" required>
+    </div>
+    <div class="form-group">
+      <label for="student_contact">Contato</label>
+      <input type="text" id="student_contact" name="student_contact" value="{{ student.contact if student else '' }}">
+    </div>
+    <div class="form-group">
+      <label for="item">O que vai trazer</label>
+      <input type="text" id="item" name="item" value="{{ part.item }}" required>
+    </div>
+    <div class="form-group full">
+      <button class="btn" type="submit">Salvar</button>
+      <a class="btn ghost" href="{{ url_for('home') }}">Cancelar</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

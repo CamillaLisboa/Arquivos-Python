@@ -10,13 +10,11 @@ class SQLiteAgendaRepository(Repository):
     Implementa a interface Repository usando sqlite3 nativo.
     """
     def __init__(self, db_path: str):
-        # Garante caminho absoluto e cria a pasta do banco, se necessário
         self.db_path = os.path.abspath(db_path)
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.init_db()
 
     def connect(self):
-        # timeout ajuda em FS sincronizados (iCloud/OneDrive) que podem “demorar” a liberar o arquivo
         conn = sqlite3.connect(self.db_path, timeout=10)
         conn.row_factory = sqlite3.Row
         return conn
@@ -57,6 +55,11 @@ class SQLiteAgendaRepository(Repository):
             conn.commit()
             return cur.lastrowid
 
+    def update_event(self, event_id: int, title: str, date: str) -> None:
+        with self.connect() as conn:
+            conn.execute("UPDATE events SET title = ?, date = ? WHERE id = ?", (title, date, event_id))
+            conn.commit()
+
     def delete_event(self, event_id: int) -> None:
         with self.connect() as conn:
             conn.execute("DELETE FROM participations WHERE event_id = ?", (event_id,))
@@ -92,6 +95,7 @@ class SQLiteAgendaRepository(Repository):
                 FROM participations p
                 JOIN students s ON s.id = p.student_id
                 WHERE p.event_id = ?
+                ORDER BY p.id DESC
             """, (event_id,)).fetchall()
             for pr in parts:
                 event.add_participation(Participation(pr["id"], pr["event_id"], pr["student_id"], pr["student_name"], pr["item"]))
@@ -107,6 +111,18 @@ class SQLiteAgendaRepository(Repository):
             conn.commit()
             return Student(name.strip(), contact.strip(), sid=cur.lastrowid)
 
+    def get_student(self, student_id: int) -> Optional[Student]:
+        with self.connect() as conn:
+            r = conn.execute("SELECT id, name, contact FROM students WHERE id = ?", (student_id,)).fetchone()
+            if not r:
+                return None
+            return Student(r["name"], r["contact"], sid=r["id"])
+
+    def update_student(self, student_id: int, name: str, contact: str) -> None:
+        with self.connect() as conn:
+            conn.execute("UPDATE students SET name = ?, contact = ? WHERE id = ?", (name.strip(), contact.strip(), student_id))
+            conn.commit()
+
     def list_students(self) -> List[Student]:
         with self.connect() as conn:
             rows = conn.execute("SELECT id, name, contact FROM students ORDER BY name ASC").fetchall()
@@ -121,6 +137,23 @@ class SQLiteAgendaRepository(Repository):
             )
             conn.commit()
             return cur.lastrowid
+
+    def get_participation(self, participation_id: int) -> Optional[Participation]:
+        with self.connect() as conn:
+            r = conn.execute("""
+                SELECT p.id, p.event_id, p.student_id, p.item, s.name AS student_name
+                FROM participations p
+                JOIN students s ON s.id = p.student_id
+                WHERE p.id = ?
+            """, (participation_id,)).fetchone()
+            if not r:
+                return None
+            return Participation(r["id"], r["event_id"], r["student_id"], r["student_name"], r["item"])
+
+    def update_participation(self, participation_id: int, item: str) -> None:
+        with self.connect() as conn:
+            conn.execute("UPDATE participations SET item = ? WHERE id = ?", (item.strip(), participation_id))
+            conn.commit()
 
     def remove_participation(self, participation_id: int) -> None:
         with self.connect() as conn:
