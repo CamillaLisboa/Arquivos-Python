@@ -1,0 +1,21 @@
+p {
+    color: navy;
+    font-size: 38px;
+    font-family: Arial;;
+}
+#aviso {
+    color: red;
+    font-size: 30px;
+    font-family: monospace;
+}
+.div-esq {
+    width: 30%;
+    background-color: lightblue;
+    float: left;
+    vertical-align: top;
+}
+#principal {
+    color: red;
+    font-size: 40px;
+    clear: both; 
+}

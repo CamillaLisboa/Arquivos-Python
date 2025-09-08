@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Calcular{% endblock %}
+{% block content %}
+<form class="card form" method="post">
+  <h2>Calcular Aposentadoria</h2>
+  <fieldset>
+    <legend>Dados</legend>
+
+    <label for="nome">Nome</label>
+    <input id="nome" name="nome" type="text" minlength="2" maxlength="80" required>
+
+    <label for="genero">Gênero</label>
+    <select id="genero" name="genero" required>
+      <option value="" disabled selected>Selecione</option>
+      <option value="f">Feminino</option>
+      <option value="m">Masculino</option>
+    </select>
+
+    <label for="idade">Idade</label>
+    <input id="idade" name="idade" type="number" min="0" max="120" required>
+
+    <label for="salario">Salário (R$)</label>
+    <input id="salario" name="salario" type="text" inputmode="decimal" placeholder="Ex.: 3500,00" required>
+
+    <label for="contribuicao">Anos de contribuição</label>
+    <input id="contribuicao" name="contribuicao" type="number" min="0" max="60" required>
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit">Calcular</button>
+  </div>
+</form>
+{% endblock %}

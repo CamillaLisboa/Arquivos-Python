@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Início — Cálculo de Aposentadoria{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>Problemática</h2>
+  <p>Calcular uma estimativa de aposentadoria a partir de <strong>salário</strong>, <strong>idade</strong>,
+     <strong>anos de contribuição</strong> e <strong>gênero</strong>, garantindo boas práticas de POO:</p>
+  <ul>
+    <li><b>Getters e Setters</b> com validação (ex.: salário não negativo)</li>
+    <li><b>Composição</b> (Employee <i>tem um</i> Salary)</li>
+    <li><b>Agregação</b> (Calculator usa uma policy compartilhada)</li>
+    <li><b>Herança</b> (Employee herda de Person)</li>
+    <li><b>SOLID</b> (SRP, OCP, LSP, DIP)</li>
+  </ul>
+  <p><a class="button" href="{{ url_for('calcular') }}">Ir para o cálculo</a></p>
+</section>
+{% endblock %}

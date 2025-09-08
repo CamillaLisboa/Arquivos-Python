@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; background: #f6f8fb; color: #222; }
+header { background: #0b2955; color: #fff; padding: 16px; }
+header .app-title { margin: 0 0 8px 0; font-size: 20px; }
+nav a { color: #fff; text-decoration: none; margin-right: 12px; font-weight: 600; }
+main { max-width: 980px; margin: 24px auto; padding: 0 12px; }
+.card { background: #fff; border-radius: 14px; padding: 16px 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); margin-bottom: 18px; }
+.form label { display: block; margin: 12px 0 6px; font-weight: 600; }
+.form input, .form select { width: 100%; padding: 10px 12px; border: 1px solid #c9d5ea; border-radius: 10px; }
+.form fieldset { border: 1px solid #c9d5ea; border-radius: 12px; padding: 12px; }
+.form legend { padding: 0 8px; font-weight: 700; }
+.actions { margin-top: 12px; }
+button, .button { border: none; background: #0b2955; color: #fff; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 700; display: inline-block; }
+button:hover, .button:hover { filter: brightness(1.1); }
+.flash-wrap { margin-bottom: 12px; }
+.flash { padding: 10px 12px; border-radius: 10px; margin-bottom: 8px; }
+.flash.error { background: #ffe2e2; color: #7a0613; }
+.flash.success { background: #e2ffed; color: #064d2a; }
+.flash.warning { background: #fff5d6; color: #7a5b06; }
+.flash.info { background: #e6f0ff; color: #073f7a; }
+.tabela { width: 100%; border-collapse: collapse; }
+.tabela th, .tabela td { padding: 8px 10px; border: 1px solid #c9d5ea; text-align: left; }
+footer { text-align: center; padding: 16px; color: #555; }

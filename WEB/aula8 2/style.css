@@ -1,0 +1,185 @@
+/* --------- Reset básico --------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img, svg { max-width: 100%; display: block; }
+
+.certificado{
+  margin: 8px 0 12px;
+  display: flex;
+  justify-content: left;   /* centraliza a imagem */
+}
+
+.certificado img{
+  /* aumenta “um pouco” e mantém responsivo */
+  width: clamp(360px, 40vw, 440px);
+  height: auto;
+}
+
+/* --------- Variáveis de tema --------- */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --ink: #1b1f23;
+  --muted: #5a6b7a;
+  --accent: #2948ff;
+  --accent-2:#6b7cff;
+  --line: #e6e9f2;
+}
+
+/* --------- Base --------- */
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container{
+  width: min(1024px, 92vw);
+  margin: 36px auto 64px;
+}
+
+/* ---------- Header estilo "PORTFÓLIO" ---------- */
+.header{
+  text-align: center;
+  padding: 24px 20px 12px;
+}
+.header .eyebrow{
+  letter-spacing: 0.25em;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 0;
+}
+.header h1{
+  margin: 6px 0 2px;
+  font-size: clamp(28px, 4vw, 40px);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.header .contact{
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+/* ---------- Layout principal ---------- */
+.layout{
+  display: grid;
+  grid-template-columns: 300px 1fr; /* padrão */
+  gap: 24px;
+  margin-top: 22px;
+}
+/* Variação mais estreita (usada no resumo) */
+.layout.is-narrow{ grid-template-columns: 280px 1fr; }
+
+@media (max-width: 900px){
+  .layout,
+  .layout.is-narrow{ grid-template-columns: 1fr; }
+}
+
+/* ---------- Card lateral (sidebar) ---------- */
+.sidebar{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+/* Centralização da foto (IMG ou SVG) dentro do figure */
+.sidebar figure{
+  margin: 0 0 14px;
+  text-align: center; /* mantém a legenda centralizada */
+}
+.sidebar figure img,
+.sidebar figure svg{
+  display: block;
+  margin: 0 auto;     /* centraliza horizontalmente */
+}
+
+/* (Opcional) Caixa para centralizar a foto no centro exato do espaço */
+.avatar-box{
+  min-height: 220px;           /* ajuste conforme a altura desejada */
+  display: flex;
+  align-items: center;         /* centro vertical */
+  justify-content: center;     /* centro horizontal */
+}
+
+.sidebar figcaption{
+  color: var(--muted);
+  font-size: .85rem;
+  margin-top: 6px;
+}
+
+/* Menu lateral */
+.menu{
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.menu li{ margin: 6px 0; }
+.menu a{
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: var(--ink);
+}
+.menu a:hover{
+  background: #eef1ff;
+  color: var(--accent);
+}
+
+/* ---------- Cards de seção ---------- */
+.section{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.section h2{
+  margin: 0 0 10px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 14px;
+}
+.section h2::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 6px;
+  height: 0.75em;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 3px;
+}
+.section p{ margin: 10px 0; color: var(--ink); }
+.section .muted{ color: var(--muted); }
+
+/* ---------- Listas ---------- */
+ul, ol{ padding-left: 20px; }
+li{ margin: 6px 0; }
+
+/* ---------- Grid de Skills ---------- */
+.skill-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+.skill-col h3{
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* ---------- Rodapé ---------- */
+.footer{
+  text-align: center;
+  color: var(--muted);
+  margin-top: 18px;
+}

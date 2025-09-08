@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Resultado{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>Resultado</h2>
+  <p><b>{{ r.name }}</b>, idade <b>{{ r.age }}</b>, gênero <b>{{ 'Feminino' if r.gender=='f' else 'Masculino' }}</b>, contribuiu <b>{{ r.contrib_years }}</b> anos.</p>
+  <ul>
+    <li>Salário informado: <b>R$ {{ "%.2f"|format(r.salary) }}</b></li>
+    <li>Idade mínima (regra educacional): <b>{{ r.min_age }}</b></li>
+    <li>Faltam <b>{{ r.years_left }}</b> ano(s) para atingir a idade mínima.</li>
+    <li>Elegível hoje? <b>{{ 'Sim' if r.eligible else 'Não' }}</b></li>
+    <li>Taxa de reposição estimada: <b>{{ "%.0f"|format(r.replacement_rate*100) }}%</b></li>
+    <li>Benefício estimado: <b>R$ {{ "%.2f"|format(r.estimated_benefit) }}</b></li>
+    <li>Ano estimado para elegibilidade: <b>{{ r.estimated_year }}</b></li>
+  </ul>
+  <p><a href="{{ url_for('calcular') }}">Novo cálculo</a></p>
+</section>
+{% endblock %}

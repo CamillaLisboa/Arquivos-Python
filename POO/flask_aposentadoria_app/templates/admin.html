@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<section class="card">
+  <h2>Últimos Cálculos</h2>
+  <table class="tabela" border="1">
+    <thead>
+      <tr>
+        <th>ID</th><th>Nome</th><th>Gênero</th><th>Idade</th><th>Salário</th>
+        <th>Contrib.</th><th>Taxa</th><th>Benefício</th><th>Mín. Idade</th><th>Faltam</th><th>Ano</th><th>Criado em</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <td>{{ r['id'] }}</td>
+        <td>{{ r['nome'] }}</td>
+        <td>{{ 'F' if r['genero']=='f' else 'M' }}</td>
+        <td>{{ r['idade'] }}</td>
+        <td>R$ {{ "%.2f"|format(r['salario']) }}</td>
+        <td>{{ r['contribuicao'] }}</td>
+        <td>{{ "%.0f"|format(r['taxa']*100) }}%</td>
+        <td>R$ {{ "%.2f"|format(r['beneficio']) }}</td>
+        <td>{{ r['minimo_idade'] }}</td>
+        <td>{{ r['faltam_anos'] }}</td>
+        <td>{{ r['ano_estimado'] }}</td>
+        <td>{{ r['criado_em'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
