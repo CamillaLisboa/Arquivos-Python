@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Books</h1>
+
+    <a href="/book/add" class="btn btn-secondary">Inserir novo livro</a>
+    <ul>
+        {% for book in livros %}
+        <li>{{ book.title }}
+              <a href="delete/{{book.id}}" class="btn btn-secondary btn-xs">Excluir</a>
+
+                <a href="atualiza/{{book.id}}" class="btn btn-secondary btn-xs">Editar</a>
+
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
